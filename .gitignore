@@ -46,3 +46,10 @@ yarn-error.log*
 eslint.config.js
 /backend/eslint.config.mjs
 /frontend/eslint.config.js
+
+#pictures
+
+/frontend/public/images/baghdad.jpg
+/frontend/public/images/coffee.jpg
+/frontend/public/images/nangaparbat.jpg
+/frontend/public/images/istanbul.jpg
