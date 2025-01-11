@@ -1,0 +1,35 @@
+{
+  "name": "blog-backend",
+  "version": "1.0.0",
+  "description": "backend of blog application",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app"
+  },
+  "author": "mohamed alromaihi",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.32.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "express-rate-limit": "^6.7.0",
+    "helmet": "^6.0.1",
+    "hpp": "^0.2.3",
+    "joi": "^17.7.0",
+    "joi-password-complexity": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^6.7.2",
+    "multer": "^1.4.5-lts.1",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "nodemon": "^3.1.9"
+  }
+}

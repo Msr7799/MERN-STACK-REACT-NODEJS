@@ -1,0 +1,58 @@
+.create-favicon-page {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.create-favicon-page h1 {
+  color: #16191b;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.instructions {
+  border-radius: 8px;
+}
+
+.instructions p {
+  margin: 0;
+  font-size: 16px;
+  color: #856404;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 8px;
+}
+
+button.custom-button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button.custom-button:hover {
+  background-color: #0c1c2e;
+  transform: scale(1.05);
+}
+
+.dropdown-menu {
+  width: 100%;
+}
+
+.dropdown-item {
+  transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
