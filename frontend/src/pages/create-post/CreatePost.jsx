@@ -20,11 +20,11 @@ const CreatePost = () => {
   // Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    if (title.trim() === "") return toast.error("Post Title is required");
-    if (category.trim() === "") return toast.error("Post Category is required");
-    if (description.trim() === "")
-      return toast.error("Post Description is required");
-    if (!file) return toast.error("Post Image is required");
+    if (title.trim() === "") return toast.warn("⚠️ Post Title is required", { className: 'toast-warning' });
+    if (category.trim() === "") return toast.warn("⚠️ Post Category is required", { className: 'toast-warning' });
+    if (description.trim().length < 10)
+      return toast.warn("⚠️ Post Description must be at least 10 characters", { className: 'toast-warning' });
+    if (!file) return toast.warn("⚠️ Post Image is required", { className: 'toast-warning' });
 
     const formData = new FormData();
     formData.append("image", file);
@@ -32,19 +32,22 @@ const CreatePost = () => {
     formData.append("description", description);
     formData.append("category", category);
 
+    console.log("Sending Form Data:", { title, description, category, image: file });
+
     dispatch(createPost(formData));
   };
 
   const navigate = useNavigate();
   useEffect(() => {
     if (isPostCreated) {
+      toast.success("🎉 تم إنشاء المنشور بنجاح!", { className: 'toast-success' });
       navigate("/");
     }
   }, [isPostCreated, navigate]);
 
   useEffect(() => {
     dispatch(fetchCategories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <section className="create-post">

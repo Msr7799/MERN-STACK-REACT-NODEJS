@@ -1,3 +1,4 @@
+const i18n = require('./config/i18n');
 const express = require("express"); // استيراد مكتبة إكسبريس
 const connectToDb = require("./config/connectToDb"); // استيراد دالة الاتصال بقاعدة البيانات
 const xss = require("xss-clean"); // استيراد مكتبة منع هجمات XSS

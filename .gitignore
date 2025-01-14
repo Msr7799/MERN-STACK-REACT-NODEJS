@@ -41,7 +41,7 @@ yarn-error.log*
 
 #IDE files
 .vscode
-
+/backend/images
 # ESLint config files
 eslint.config.js
 /backend/eslint.config.mjs

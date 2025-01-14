@@ -27,7 +27,6 @@ function App() {
 
   return (
     <>
-      <ToastContainer theme="colored" position="top-center" />
       <Header />
       <main className="container mt-4">
         <Routes>
@@ -47,7 +46,7 @@ function App() {
           <Route path="/admin-dashboard/posts-table" element={user?.isAdmin ? <PostsTable /> : <Navigate to="/" />} />
           <Route path="/admin-dashboard/categories-table" element={user?.isAdmin ? <CategoriesTable /> : <Navigate to="/" />} />
           <Route path="/admin-dashboard/comments-table" element={user?.isAdmin ? <CommentsTable /> : <Navigate to="/" />} />
-          <Route path="/create-favicon" element={<CreateFavicon />} /> {/* إضافة الراوت الجديد */}
+          <Route path="/create-favicon" element={<CreateFavicon />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -15,6 +15,7 @@ export function getUserProfile(userId) {
   };
 }
 
+
 // Upload Profile Photo
 export function uploadProfilePhoto(newPhoto) {
   return async (dispatch, getState) => {

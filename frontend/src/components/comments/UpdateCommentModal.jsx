@@ -6,10 +6,8 @@ import { updateComment } from "../../redux/apiCalls/commentApiCall";
 
 const UpdateCommentModal = ({ setUpdateComment, commentForUpdate }) => {
   const dispatch = useDispatch();
-
   const [text, setText] = useState(commentForUpdate?.text);
 
-  // Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
     if (text.trim() === "") return toast.error("Please write something");

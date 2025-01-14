@@ -14,7 +14,7 @@ const Category = () => {
   useEffect(() => {
     dispatch(fetchPostsBasedOnCategory(category));
     window.scrollTo(0, 0);
-  }, [category]);
+  }, [category, dispatch]);
 
   return (
     <section className="category">

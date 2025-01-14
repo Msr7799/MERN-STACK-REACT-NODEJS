@@ -13,13 +13,11 @@ const CommentList = ({ comments }) => {
   const [updateComment, setUpdateComment] = useState(false);
   const [commentForUpdate, setCommentForUpdate] = useState(null);
 
-  // Update Comment Handler
   const updateCommentHandler = (comment) => {
     setCommentForUpdate(comment);
     setUpdateComment(true);
   };
 
-  // Delete Comment Handler
   const deleteCommentHandler = (commentId) => {
     swal({
       title: "Are you sure?",
@@ -37,32 +35,47 @@ const CommentList = ({ comments }) => {
   return (
     <div className="comment-list">
       <h4 className="comment-list-count">{comments?.length} Comments</h4>
-      {comments?.map((comment) => (
-        <div key={comment._id} className="comment-item">
-          <div className="comment-item-info">
-            <div className="comment-item-username">{comment.username}</div>
-            <div className="comment-item-time">
-              <Moment fromNow ago>
-                {comment.createdAt}
-              </Moment>{" "}
-              ago
+      {comments?.map((comment, index) => {
+        const alertClass = index % 2 === 0 ? "alert-primary" : "alert-secondary";
+        return (
+          <div key={comment._id} className={`alert ${alertClass}`} role="alert">
+            <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
+            <div className="comment-item-info">
+              <img
+                src={comment.user.profilePhoto?.url || '/default-avatar.png'}
+                alt=""
+                className="rounded-circle"
+                width="30"
+                height="30"
+                style={{ marginRight: "10px" }}
+              />
+              <strong>{comment.username}</strong>
+              <small>
+                <Moment fromNow ago>
+                  {comment.createdAt}
+                </Moment>{" "}
+                ago
+              </small>
             </div>
-          </div>
-          <p className="comment-item-text">{comment.text}</p>
-          {user?._id === comment.user && (
+            <p className="comment-item-text">{comment.text}</p>
             <div className="comment-item-icon-wrapper">
               <i
                 onClick={() => updateCommentHandler(comment)}
                 className="bi bi-pencil-square"
               ></i>
               <i
-                onClick={() => deleteCommentHandler(comment?._id)}
+                onClick={() => deleteCommentHandler(comment._id)}
                 className="bi bi-trash-fill"
               ></i>
+              <i
+                onClick={() => console.log('Like comment')}
+                className="bi bi-heart"
+              ></i>
+              <small>{comment.likes?.length || 0} likes</small>
             </div>
-          )}
-        </div>
-      ))}
+          </div>
+        );
+      })}
       {updateComment && (
         <UpdateCommentModal
           commentForUpdate={commentForUpdate}

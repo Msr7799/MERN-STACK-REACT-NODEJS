@@ -43,22 +43,27 @@ export function createPost(newPost) {
   return async (dispatch, getState) => {
     try {
       dispatch(postActions.setLoading());
-      await request.post(`/api/posts`, newPost, {
+      const { data } = await request.post(`/api/posts`, newPost, {
         headers: {
           Authorization: "Bearer " + getState().auth.user.token,
           "Content-Type": "multipart/form-data",
         },
       });
 
+      toast.success("🎉 تم إنشاء المنشور بنجاح!", { className: 'toast-success' });
+
       dispatch(postActions.setIsPostCreated());
       setTimeout(() => dispatch(postActions.clearIsPostCreated()), 2000); // 2s
     } catch (error) {
-      toast.error(error.response.data.message);
+      if (error.response && error.response.status >= 400 && error.response.status < 500) {
+        toast.warn(`⚠️ ${error.response.data.message}`, { className: 'toast-warning' });
+      } else {
+        toast.error(`❌ خطأ في الشبكة: ${error.message}`, { className: 'toast-danger' });
+      }
       dispatch(postActions.clearLoading());
     }
   };
 }
-
 // Fetch Single Post
 export function fetchSinglePost(postId) {
   return async (dispatch) => {
